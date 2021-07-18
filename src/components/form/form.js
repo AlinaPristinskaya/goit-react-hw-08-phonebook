@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 //import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-
+import s from './form.module.css'
 
 class Form extends Component {
   
@@ -42,9 +42,12 @@ class Form extends Component {
        return (
             <>
             
-            <form onSubmit={this.handelSubmit}>
+            <form className={s.form} onSubmit={this.handelSubmit}>
               <label htmlFor={this.nameInputId}> Name </label>
             <input
+            className={
+              s.input
+            }
             id={this.nameInputId}
             onChange={this.handelChange}
             value={this.state.name}
@@ -56,6 +59,9 @@ class Form extends Component {
 />
             <label htmlFor={this.numberInputId}> Number </label>
               <input
+              className={
+                s.input
+              }
               id={this.numberInputId}
               onChange={this.handelChange}
               value={this.state.number}
@@ -67,7 +73,7 @@ class Form extends Component {
 />
             
        
-            <button type="submit">Add contact</button>
+            <button className={s.button}type="submit">Add contact</button>
    
             </form>
      

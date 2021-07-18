@@ -8,6 +8,7 @@ import Filter from './components/filter/filter'
 
 
 
+
 class App extends Component {
 
   
@@ -31,11 +32,17 @@ class App extends Component {
       
       
     }
+    const user = this.state.contacts.find(user => user.name === person.name);
+    user?alert(`${user.name} is already on contacts`):
     this.setState(prevState=>({      
        
-        contacts:[...prevState.contacts,person],
-        
-    }))
+      contacts:[person,...prevState.contacts],
+      
+  }))
+    
+
+
+    
     
     console.log(this.state.contacts)
   }
@@ -50,7 +57,11 @@ class App extends Component {
       contact.name.toLowerCase().includes(normalizedFilter),
     );
   };
-  
+  deleteContacts = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
 
    
   render() {
@@ -65,7 +76,7 @@ class App extends Component {
             <h2>Contacts</h2>
 
 
-            <PersonEditor persons={visibleContacts} />
+            <PersonEditor persons={visibleContacts} onDeleteContacts={this.deleteContacts}/>
           </>
           
      )
