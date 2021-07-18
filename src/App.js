@@ -1,6 +1,6 @@
 
 import React,{Component} from 'react';
-//import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 import Form from "./components/form/form"
 import PersonEditor from './components/PersonEditor/PersonEditor';
@@ -10,6 +10,20 @@ import Filter from './components/filter/filter'
 
 
 class App extends Component {
+  static defaultProps={
+    
+    contact:[],
+    filter:''
+   }
+static propTypes={
+  contact:PropTypes.arrayOf(PropTypes.shape({
+    id:PropTypes.string.isRequired,
+    name:PropTypes.string.isRequired,
+    number:PropTypes.number.isRequired
+  })),
+  filter:PropTypes.string
+  
+}
 
   
   state = {
