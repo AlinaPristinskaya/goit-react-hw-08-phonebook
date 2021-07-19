@@ -7,15 +7,13 @@ import PersonEditor from './components/PersonEditor/PersonEditor';
 import Filter from './components/Filter/Filter'
 
 
-
-
 class App extends Component {
   static defaultProps={
     
     contact:[],
     filter:''
    }
-static propTypes={
+  static propTypes={
   contact:PropTypes.arrayOf(PropTypes.shape({
     id:PropTypes.string.isRequired,
     name:PropTypes.string.isRequired,
@@ -23,7 +21,7 @@ static propTypes={
   })),
   filter:PropTypes.string
   
-}
+  }
 
   
   state = {
@@ -78,7 +76,7 @@ static propTypes={
           <>
             <h1>Phonebook</h1>
             <Form onSubmit={this.formSubmitHandler}/>
-            <Filter value={this.state.filter} onChange={this.changeFiltr}  />
+            <Filter value={this.state.filter} onChange={this.changeFilter}  />
             <h2>Contacts</h2>
             <PersonEditor persons={visibleContacts} onDeleteContacts={this.deleteContacts}/>
           </>
