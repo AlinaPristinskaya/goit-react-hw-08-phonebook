@@ -7,16 +7,12 @@ class PersonEditor extends Component{
         persons: [],
     };
 
-
-    
     state={
         persons:this.props.persons
     }
-          
-     
+    
     render=()=>{
         const {persons}=this.props;
-        
         
         return(
             <div>

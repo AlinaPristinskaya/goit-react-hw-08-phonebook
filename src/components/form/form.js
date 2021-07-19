@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import s from './form.module.css'
+import s from './Form.module.css'
 
 class Form extends Component {
     
@@ -11,8 +11,6 @@ class Form extends Component {
   }
   nameInputId=uuidv4();
   numberInputId=uuidv4();
-
-
 
   handelChange=(event)=>{
     const {name,value}=event.currentTarget;
@@ -34,7 +32,6 @@ class Form extends Component {
       })
   }
 
-   
   render() {
       
        return (

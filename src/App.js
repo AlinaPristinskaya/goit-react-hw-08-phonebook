@@ -2,9 +2,9 @@
 import React,{Component} from 'react';
 import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
-import Form from "./components/form/form"
+import Form from "./components/Form/Form"
 import PersonEditor from './components/PersonEditor/PersonEditor';
-import Filter from './components/filter/filter'
+import Filter from './components/Filter/Filter'
 
 
 
@@ -43,8 +43,7 @@ static propTypes={
       id:this.nameListId,
       name:data.name,
       number:data.number
-      
-      
+            
     }
     const user = this.state.contacts.find(user => user.name === person.name);
     user?alert(`${user.name} is already on contacts`):
@@ -54,13 +53,8 @@ static propTypes={
       
   }))
     
-
-
-    
-    
-    console.log(this.state.contacts)
   }
-  changeFiltr=(e)=>{
+  changeFilter=(e)=>{
     this.setState({filter:e.currentTarget.value})
   }
   getVisibleContacts = () => {
@@ -80,16 +74,12 @@ static propTypes={
    
   render() {
      const visibleContacts=this.getVisibleContacts();
-     console.log(visibleContacts)
-     console.log(this.state.contacts)
-       return (
-            <>
+           return (
+          <>
             <h1>Phonebook</h1>
             <Form onSubmit={this.formSubmitHandler}/>
             <Filter value={this.state.filter} onChange={this.changeFiltr}  />
             <h2>Contacts</h2>
-
-
             <PersonEditor persons={visibleContacts} onDeleteContacts={this.deleteContacts}/>
           </>
           
