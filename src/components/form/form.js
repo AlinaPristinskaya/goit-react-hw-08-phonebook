@@ -14,6 +14,8 @@ class Form extends Component {
 
   handelChange=(event)=>{
     const {name,value}=event.currentTarget;
+    console.log(this.state.name)
+    console.log(this.state.contacts)    
     this.setState({[name]:value})
 
   }
