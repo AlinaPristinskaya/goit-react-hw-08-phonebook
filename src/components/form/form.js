@@ -18,7 +18,7 @@ class Form extends Component {
 
   }
   handelSubmit=e=>{
-    e.preventDefault();
+    //e.preventDefault();
     this.props.onSubmit(this.state);
     this.reset()
   }

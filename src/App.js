@@ -52,7 +52,7 @@ class App extends Component {
   }
   nameListId=uuidv4();
   formSubmitHandler=data=>{
-   
+  
     const person={
       id:this.nameListId,
       name:data.name,
