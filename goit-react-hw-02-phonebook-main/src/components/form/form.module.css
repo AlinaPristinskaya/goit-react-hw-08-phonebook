@@ -1,0 +1,22 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+
+}
+.input{
+    width: 400px;
+    height: 35px;
+    margin-bottom: 10px;
+
+}
+.button{
+   width: 150px;
+    
+    font: inherit;
+    cursor: pointer;
+    outline: none;
+    
+    
+ }
+ 
