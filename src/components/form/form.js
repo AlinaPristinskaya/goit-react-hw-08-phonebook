@@ -13,9 +13,7 @@ class Form extends Component {
   numberInputId=uuidv4();
 
   handelChange=(event)=>{
-    const {name,value}=event.currentTarget;
-    console.log(this.state.name)
-    console.log(this.state.contacts)    
+    const {name,value}=event.currentTarget;  
     this.setState({[name]:value})
 
   }
