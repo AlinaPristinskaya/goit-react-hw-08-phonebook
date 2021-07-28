@@ -1,108 +1,66 @@
 
-import React,{Component} from 'react';
-import PropTypes from 'prop-types';
+import React,{useState,useEffect} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Form from "./components/Form/Form"
 import PersonEditor from './components/PersonEditor/PersonEditor';
-import Filter from './components/Filter/Filter'
+import Filter from './components/Filter/Filter';
 
 
-class App extends Component {
-  static defaultProps={
-    
-    contact:[],
-    filter:''
-   }
-  static propTypes={
-  contact:PropTypes.arrayOf(PropTypes.shape({
-    id:PropTypes.string.isRequired,
-    name:PropTypes.string.isRequired,
-    number:PropTypes.number.isRequired
-  })),
-  filter:PropTypes.string
-  
-  }
 
-  
-  state = {
-    contacts: [  
-      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},],
-    filter: '',
-    
-  }
-  componentDidMount(){
-    const contacts=localStorage.getItem('contacts');
-    const parseContacts=JSON.parse(contacts);
-    console.log(parseContacts)
-    if (parseContacts){
-      this.setState({contacts:parseContacts})
+function App(){
+  const [contacts,setContacts]=useState(()=>{
+    return JSON.parse(localStorage.getItem('contacts'))??[]
+  })
+  const [filter,setFilter]=useState('');
 
-    }
-    
-  }
-  componentDidUpdate(prevState,prevProps){
-    
-    if(prevState.contacts!==this.state.contacts){
-      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-    }
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts))
+  }, [contacts]);
+  const nameListId=uuidv4();
 
-  }
-  nameListId=uuidv4();
-  formSubmitHandler=data=>{
-  
+  const formSubmitHandler=data=>{
     const person={
-      id:this.nameListId,
+      id:nameListId,
       name:data.name,
       number:data.number
             
     }
-    const user = this.state.contacts.find(user => user.name === person.name);
+    const user = contacts.find(user => user.name === person.name);
     user?alert(`${user.name} is already on contacts`):
-    this.setState(prevState=>({      
-       
-      contacts:[person,...prevState.contacts],
+    setContacts(prev=>([person,...prev]))
       
-  }))
+  }
     
+   const changeFilter=(e)=>{
+    setFilter(e.currentTarget.value)
+
   }
-  changeFilter=(e)=>{
-    this.setState({filter:e.currentTarget.value})
-  }
-  getVisibleContacts = () => {
-    const { filter, contacts } = this.state;
+
+  const getVisibleContacts = () => {
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(contact =>
       contact.name.toLowerCase().includes(normalizedFilter),
     );
   };
-  deleteContacts = contactId => {
-    this.setState(prevState => ({
-      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-    }));
+
+  const deleteContacts = contactId => {
+    setContacts(prev => (prev.filter(contact => contact.id !== contactId)));
   };
 
-   
-  render() {
-     const visibleContacts=this.getVisibleContacts();
-           return (
-          <>
-            <h1>Phonebook</h1>
-            <Form onSubmit={this.formSubmitHandler}/>
-            <Filter value={this.state.filter} onChange={this.changeFilter}  />
-            <h2>Contacts</h2>
-            <PersonEditor persons={visibleContacts} onDeleteContacts={this.deleteContacts}/>
-          </>
-          
-     )
-   
-
-  }
-  }
+  const visibleContacts=getVisibleContacts();
 
 
+  return(
+    <>
+      <h1>Phonebook</h1>
+      <Form onSubmit={formSubmitHandler}/>
+      <Filter value={filter} onChange={changeFilter}  />
+      <h2>Contacts</h2>
+      <PersonEditor persons={visibleContacts} onDeleteContacts={deleteContacts}/>
+    </>
+    
+)
+}
 
 export default App;
