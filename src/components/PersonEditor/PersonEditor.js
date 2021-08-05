@@ -1,5 +1,7 @@
 
 import s from './PersoneEditor.module.css';
+import {connect} from 'react-redux';
+import actions from '../../redux/contacts/actions';
 
 
 function PersonEditor({persons,onDeleteContacts}){
@@ -16,7 +18,24 @@ function PersonEditor({persons,onDeleteContacts}){
             </div>
 
 }
+const getVisibleContacts=(items,filter)=>{
+  const normalizedFilter = filter.toLowerCase();
+  return items.filter(item=>item.name.toLowerCase().includes(normalizedFilter))
+}
 
+
+ const mapStateToProps=({contacts:{items,filter}})=>({
+
+ persons:getVisibleContacts(items,filter),
+})
+
+
+const mapDispatchToProps=dispatch=>{
+  return{
+    onDeleteContacts:(id)=>dispatch(actions.deleteContacts(id))
+  }
+  
+}
       
 
-export default PersonEditor;
+export default connect(mapStateToProps,mapDispatchToProps)(PersonEditor); 

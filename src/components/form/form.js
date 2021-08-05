@@ -1,6 +1,9 @@
 import {useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import s from './Form.module.css';
+import {connect} from 'react-redux';
+import actions from '../../redux/contacts/actions';
+
 
 
 function Form({onSubmit}){
@@ -24,7 +27,7 @@ function Form({onSubmit}){
   }
 
     const handelSubmit=e=>{
-    //e.preventDefault();
+    e.preventDefault();
     onSubmit({name,number});
     reset()
   }
@@ -64,7 +67,10 @@ function Form({onSubmit}){
     </form>
 
 </>
-);
+);}
 
-}
-  export default Form;
+const mapDispatchToProps=dispatch=>({
+  onSubmit:data=>dispatch(actions.addContacts(data))
+})
+
+  export default connect(null,mapDispatchToProps)(Form);

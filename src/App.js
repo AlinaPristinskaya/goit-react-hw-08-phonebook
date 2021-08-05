@@ -1,66 +1,40 @@
 
-import React,{useState,useEffect} from 'react';
-import { v4 as uuidv4 } from 'uuid';
+//import React,{useState,useEffect} from 'react';
+//import { v4 as uuidv4 } from 'uuid';
 import Form from "./components/Form/Form"
 import PersonEditor from './components/PersonEditor/PersonEditor';
 import Filter from './components/Filter/Filter';
+import {connect} from 'react-redux'
+import actions from './redux/contacts/actions'
 
 
 
-function App(){
-  const [contacts,setContacts]=useState(()=>{
-    return JSON.parse(localStorage.getItem('contacts'))??[]
-  })
-  const [filter,setFilter]=useState('');
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts))
-  }, [contacts]);
-  const nameListId=uuidv4();
-
-  const formSubmitHandler=data=>{
-    const person={
-      id:nameListId,
-      name:data.name,
-      number:data.number
-            
-    }
-    const user = contacts.find(user => user.name === person.name);
-    user?alert(`${user.name} is already on contacts`):
-    setContacts(prev=>([person,...prev]))
-      
-  }
-    
-   const changeFilter=(e)=>{
-    setFilter(e.currentTarget.value)
-
-  }
-
-  const getVisibleContacts = () => {
-    const normalizedFilter = filter.toLowerCase();
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizedFilter),
-    );
-  };
-
-  const deleteContacts = contactId => {
-    setContacts(prev => (prev.filter(contact => contact.id !== contactId)));
-  };
-
-  const visibleContacts=getVisibleContacts();
-
-
+function App({getVisibleContacts,formSubmitHandler,deleteContacts}){
+  
   return(
     <>
       <h1>Phonebook</h1>
-      <Form onSubmit={formSubmitHandler}/>
-      <Filter value={filter} onChange={changeFilter}  />
+      <Form/> 
+      <Filter/>
       <h2>Contacts</h2>
-      <PersonEditor persons={visibleContacts} onDeleteContacts={deleteContacts}/>
+      <PersonEditor />
     </>
     
 )
 }
+const mapStateToProps=state=>{
+  return {
+    items:state.contacts.items,
+    filter:state.contacts.filter
+  }
+}
+const mapDispatchToProps=dispatch=>{
+  return{
+    formSubmitHandler:value=> dispatch(actions.addContacts(value)),
+    getVisibleContacts:value=>dispatch(actions.filterContacts(value)),
+    deleteContacts:id=>dispatch(actions.deleteContacts(id))
 
-export default App;
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
