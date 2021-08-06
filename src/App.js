@@ -22,6 +22,8 @@ function App({getVisibleContacts,formSubmitHandler,deleteContacts}){
     
 )
 }
+
+
 const mapStateToProps=state=>{
   return {
     items:state.contacts.items,
