@@ -14,14 +14,14 @@ function Form({onSubmit}){
   const numberInputId=uuidv4();
 
   const handelChangeName=(event)=>{
-    const {value}=event.currentTarget; 
+    const {value}=event.currentTarget;  
     setName(value);
   
   }
 
   const handelChangeNumber=(e)=>{
-    
-    const {value}=e.currentTarget; 
+    console.log(e);
+    const {value}=e.currentTarget;  
     setNumber(value);
 
   }
