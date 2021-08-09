@@ -8,7 +8,9 @@ const itemsReducer=createReducer([
   {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
   {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},], 
   {
-    [actions.addContacts]:(state,{payload})=>[...state,payload],
+    [actions.addContacts]:(state,{payload})=>{
+      const user = state.find(user => user.name === payload.name); 
+    if (user){return alert(`${payload.name} is already on contacts`)}return [...state,payload]},
     [actions.deleteContacts]:(state,{payload})=>state.filter(({ id }) => id !== payload)
 
   })
