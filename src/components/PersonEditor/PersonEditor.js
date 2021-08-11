@@ -1,9 +1,9 @@
 
 import s from './PersoneEditor.module.css';
 import {connect, useDispatch} from 'react-redux';
-import actions from '../../redux/contacts/actions';
+//import actions from '../../redux/contacts/actions';
 import { useEffect } from 'react';
-import {fetchContacts} from '../../redux/contacts/contacts-operations';
+import operations from '../../redux/contacts/contacts-operations';
 import contactsSelector from '../../redux/contacts/contacts-selektors';
 
 
@@ -13,7 +13,7 @@ function PersonEditor({persons,onDeleteContacts}){
   
   
   useEffect(()=>{
-    dispatch(fetchContacts())
+    dispatch(operations.fetchContacts())
   },[dispatch]) 
 
    
@@ -41,7 +41,7 @@ function PersonEditor({persons,onDeleteContacts}){
 
 const mapDispatchToProps=dispatch=>{
   return{
-    onDeleteContacts:(id)=>dispatch(actions.deleteContacts(id))
+    onDeleteContacts:(id)=>dispatch(operations.deleteContact(id))
   }
 }
       

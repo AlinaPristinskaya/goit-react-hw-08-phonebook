@@ -6,16 +6,22 @@ import a from './actions';
 const entities=createReducer([], 
   {
     [a.fetchContactsSuccess]:(_,{payload})=>payload,
-    [a.addContacts]:(state,{payload})=>{
+    [a.addContactSuccess]:(state,{payload})=>{
       const user = state.find(user => user.name === payload.name); 
     if (user){return alert(`${payload.name} is already on contacts`)}return [...state,payload]},
-    [a.deleteContacts]:(state,{payload})=>state.filter(({ id }) => id !== payload)
+    [a.deleteContactSuccess]:(state,{payload})=>state.filter(({ id }) => id !== payload)
 
   })
 const isLoading=createReducer(false,{
   [a.fetchContactsRequest]: () => true,
   [a.fetchContactsSuccess]: () => false,
   [a.fetchContactsError]: () => false,
+  [a.addContactRequest]: () => true,
+  [a.addContactSuccess]: () => false,
+  [a.addContactError]: () => false,
+  [a.deleteContactRequest]: () => true,
+  [a.deleteContactSuccess]: () => false,
+  [a.deleteContactError]: () => false,
 
 
 })
