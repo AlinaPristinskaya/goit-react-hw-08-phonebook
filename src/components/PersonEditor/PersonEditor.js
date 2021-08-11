@@ -1,15 +1,16 @@
 
 import s from './PersoneEditor.module.css';
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {connect, useDispatch} from 'react-redux';
 import actions from '../../redux/contacts/actions';
 import { useEffect } from 'react';
-import {fetchContacts} from '../../redux/contacts/contacts-operations'
+import {fetchContacts} from '../../redux/contacts/contacts-operations';
+import contactsSelector from '../../redux/contacts/contacts-selektors';
 
 
 
-function PersonEditor({onDeleteContacts}){
+function PersonEditor({persons,onDeleteContacts}){
   const dispatch=useDispatch();
-  const persons=useSelector(state=>state.contacts.items.entities)
+  
   
   useEffect(()=>{
     dispatch(fetchContacts())
@@ -30,24 +31,18 @@ function PersonEditor({onDeleteContacts}){
             </div>  
    </> )
 }
-const getVisibleContacts=(entities,filter)=>{
-  const normalizedFilter = filter.toLowerCase();
-  return entities.filter(entitie=>entitie.name.toLowerCase().includes(normalizedFilter))
-}
 
 
- const mapStateToProps=({contacts:{items:{entities},filter}})=>({
 
- persons:getVisibleContacts(entities,filter),
+ const mapStateToProps=state=>({
+ persons:contactsSelector.getVisibleContacts(state),
 })
 
 
 const mapDispatchToProps=dispatch=>{
   return{
     onDeleteContacts:(id)=>dispatch(actions.deleteContacts(id))
-    
   }
-  
 }
       
 
