@@ -1,15 +1,17 @@
 import {combineReducers} from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import a from './actions';
-//import {fetchContacts} from './contacts-operations'
+//import oper from './contacts-operations'
 
 const entities=createReducer([], 
   {
     [a.fetchContactsSuccess]:(_,{payload})=>payload,
-    [a.addContactSuccess]:(state,{payload})=>{
-      const user = state.find(user => user.name === payload.name); 
-    if (user){return alert(`${payload.name} is already on contacts`)}return [...state,payload]},
-    [a.deleteContactSuccess]:(state,{payload})=>state.filter(({ id }) => id !== payload)
+    [a.addContactSuccess]:(state,{payload})=>[...state,payload],
+    [a.deleteContactSuccess]:(state,{payload})=>state.filter(({ id }) => id !== payload),
+    /* [oper.addContact]:(state,{payload})=>{
+      const user = state.find(user => user.name === payload.name);
+      if (user){console.log(user);return [state]} return [...state,payload]
+    } */
 
   })
 const isLoading=createReducer(false,{
@@ -34,15 +36,6 @@ const error = createReducer(null, {
 const filterReducer=createReducer('', {
   [a.changeFilterContacts]:(_,{payload})=>payload,
 })
-/* const filterReducer= (state = '', { type, payload }) => {
-    switch (type) {
-      case types.CHANGE_FILTER:
-        return payload;
-  
-      default:
-        return state;
-    }
-  }; */
 
 export default combineReducers({
     items:combineReducers({

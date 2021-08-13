@@ -3,10 +3,13 @@ import { v4 as uuidv4 } from 'uuid';
 import s from './Form.module.css';
 import {connect} from 'react-redux';
 import operations from '../../redux/contacts/contacts-operations';
+import contactSelector from '../../redux/contacts/contacts-selektors'
 
 
 
-function Form({onSubmit}){
+
+
+function Form({onSubmit,entities}){
   const [name,setName]=useState('');
   const [number,setNumber]=useState('');
 
@@ -28,7 +31,13 @@ function Form({onSubmit}){
 
     const handelSubmit=e=>{
     e.preventDefault();
-    onSubmit({name,number});
+    const user = entities.find(user => user.name === name);
+    if (!user){
+      onSubmit({name,number});
+    reset()
+
+    } else 
+    alert (`${name} is already on contacts`)
     reset()
   }
 
@@ -36,7 +45,7 @@ function Form({onSubmit}){
       setName('');
       setNumber('');
   }
- 
+
   
   return (
     <>
@@ -69,8 +78,12 @@ function Form({onSubmit}){
 </>
 );}
 
+const mapStateToProps=state=>({
+  entities:contactSelector.getVisibleContacts(state)
+})
 const mapDispatchToProps=dispatch=>({
+  
   onSubmit:data=>dispatch(operations.addContact(data))
 })
 
-  export default connect(null,mapDispatchToProps)(Form);
+  export default connect(mapStateToProps,mapDispatchToProps)(Form);
