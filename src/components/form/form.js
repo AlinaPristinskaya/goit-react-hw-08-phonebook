@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import s from './Form.module.css';
 import {connect} from 'react-redux';
 import operations from '../../redux/contacts/contacts-operations';
-import contactSelector from '../../redux/contacts/contacts-selektors'
+import contactSelector from '../../redux/contacts/contacts-selectors'
 
 
 

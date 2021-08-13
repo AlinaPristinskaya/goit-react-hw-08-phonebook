@@ -1,5 +1,5 @@
 
-import contactsSelector from './redux/contacts/contacts-selektors'
+import contactsSelector from './redux/contacts/contacts-selectors'
 import Form from "./components/Form/Form"
 import PersonEditor from './components/PersonEditor/PersonEditor';
 import Filter from './components/Filter/Filter';

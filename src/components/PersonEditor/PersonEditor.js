@@ -4,7 +4,7 @@ import {connect, useDispatch} from 'react-redux';
 //import actions from '../../redux/contacts/actions';
 import { useEffect } from 'react';
 import operations from '../../redux/contacts/contacts-operations';
-import contactsSelector from '../../redux/contacts/contacts-selektors';
+import contactsSelector from '../../redux/contacts/contacts-selectors';
 
 
 

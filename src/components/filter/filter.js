@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Filter.module.css'
 import {connect} from 'react-redux'
 import actions from '../../redux/contacts/actions'
-import contactsSelector from '../../redux/contacts/contacts-selektors';
+import contactsSelector from '../../redux/contacts/contacts-selectors';
 
 
 
