@@ -39,7 +39,7 @@ const fetchContacts = () => async dispatch => {
     dispatch(a.deleteContactRequest());
   
     axios
-      .delete(`${url}${contactId}`)
+      .delete(`${url}/${contactId}`)
       .then(() => dispatch(a.deleteContactSuccess(contactId)))
       .catch(error => dispatch(a.deleteContactError(error)));
   };
