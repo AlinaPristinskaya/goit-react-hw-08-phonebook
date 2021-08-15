@@ -1,24 +1,28 @@
 
 import contactsSelector from './redux/contacts/contacts-selectors'
-import Form from "./components/Form/Form"
-import PersonEditor from './components/PersonEditor/PersonEditor';
-import Filter from './components/Filter/Filter';
 import {connect} from 'react-redux'
 import actions from './redux/contacts/actions';
 import { Switch, Route} from 'react-router-dom';
+import AppBar from './components/AppBar/AppBar';
+import LoginView from './components/AppBar/LoginView';
+import RegisterView from './components/AppBar/RegisterView';
+import ContactsView from './components/AppBar/ContactsView';
+
 
 
 function App({formSubmitHandler,getVisibleContacts,deleteContacts}){
   
   return(
-    <><Switch>
-      <Route path="/goit-react-hw-07-phonebook">
-      <h1>Phonebook</h1>
-      <Form/> 
-      <Filter/>
-      <h2>Contacts</h2>
-      <PersonEditor /> 
-      </Route>
+    <><AppBar/>
+    <Switch>
+      <Route exact path='/register'>
+      <RegisterView/>
+      </Route>  
+      <Route exact path='/login'component={LoginView}/>
+      <Route exact path='/contacts'component={ContactsView}/>
+      
+      
+     
       </Switch> 
     </>
     

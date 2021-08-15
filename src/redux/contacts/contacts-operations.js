@@ -3,13 +3,13 @@ import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
 
 
-const url='http://localhost:3002/contacts'
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 const fetchContacts = () => async dispatch => {
   dispatch(a.fetchContactsRequest());
   
 
   try {
-    const { data } = await axios.get(url);
+    const { data } = await axios.get('/contacts');
 
     dispatch(a.fetchContactsSuccess(data));
   } catch (error) {
@@ -28,7 +28,7 @@ const fetchContacts = () => async dispatch => {
     dispatch(a.addContactRequest());
   
     axios
-      .post(url, contact)
+      .post('/contacts', contact)
       .then(({ data }) => dispatch(a.addContactSuccess(data)))
       .catch(error => dispatch(a.addContactError(error)));
   
@@ -39,7 +39,7 @@ const fetchContacts = () => async dispatch => {
     dispatch(a.deleteContactRequest());
   
     axios
-      .delete(`${url}/${contactId}`)
+      .delete(`/contacts/${contactId}`)
       .then(() => dispatch(a.deleteContactSuccess(contactId)))
       .catch(error => dispatch(a.deleteContactError(error)));
   };
