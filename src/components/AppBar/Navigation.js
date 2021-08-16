@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import  authSelectors from '../../redux/auth/auth-selectors';
 
 const styles = {
@@ -16,20 +16,17 @@ const styles = {
   },
 };
 
-const Navigation = ({ isAuthenticated }) => (
-  <nav>
-        <NavLink
-        to="/contacts"
-        exact
-        style={styles.link}
-        activeStyle={styles.activeLink}
-      >Ваши Контакты   
+function Navigation(){
+  const isLoggedIn=useSelector(authSelectors.getIsLoggedIn)
+  return(<nav>
+    {isLoggedIn && (
+      <NavLink to="/contacts" exact style={styles.link} activeStyle={styles.activeLink}>
+        Телефонная книга   
       </NavLink>
-  </nav>
-);
+      )}</nav>
+  )
+ 
+}
 
-const mapStateToProps = state => ({
-  isAuthenticated: authSelectors.getIsAuthenticated(state),
-});
 
-export default connect(mapStateToProps)(Navigation);
+export default Navigation;
