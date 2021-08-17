@@ -1,7 +1,6 @@
 
 import s from './PersoneEditor.module.css';
 import {connect, useDispatch} from 'react-redux';
-//import actions from '../../redux/contacts/actions';
 import { useEffect } from 'react';
 import operations from '../../redux/contacts/contacts-operations';
 import contactsSelector from '../../redux/contacts/contacts-selectors';
@@ -19,10 +18,10 @@ function PersonEditor({persons,onDeleteContacts}){
    
     return  (  <>
       
-      <div>{persons.length? 
-              <ul className={s.stats}>{persons.map((person)=>
-                <li className={s.item} key={person.id}>{person.name}:{person.number}
-                <button className={s.button}
+      <div className={s.contacts}>{persons.length? 
+              <ul className={s.contacts}>{persons.map((person)=>
+                <li className={s.contactsLi} key={person.id}><span className={s.span}>{person.name}:{person.number}</span>
+                <button className={s.gradientButton}
                     type="button"
                     onClick={() => onDeleteContacts(person.id)}>Удалить
                 </button>

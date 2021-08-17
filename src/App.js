@@ -4,14 +4,16 @@ import {connect, useDispatch, useSelector} from 'react-redux'
 import actions from './redux/contacts/actions';
 import { Switch } from 'react-router-dom';
 import AppBar from './components/AppBar/AppBar';
-import LoginView from './components/AppBar/LoginView';
-import RegisterView from './components/AppBar/RegisterView';
-import ContactsView from './components/AppBar/ContactsView';
+import LoginView from './components/LoginView/LoginView';
+import RegisterView from './components/RegisterView/RegisterView';
+import ContactsView from './components/ContactsView';
 import { useEffect } from 'react';
 import operations from './redux/auth/auth-operations'
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
-import authSelectors from './redux/auth/auth-selectors'
+import authSelectors from './redux/auth/auth-selectors';
+
+
 
 
 
@@ -25,9 +27,9 @@ function App({formSubmitHandler,getVisibleContacts,deleteContacts}){
     <><AppBar/>
       <Switch>
        <PublicRoute exact path='/register' restricted><RegisterView/></PublicRoute>
-       <PublicRoute exact path='/login'restricted><LoginView/></PublicRoute>           
+       <PublicRoute  path='/login'restricted><LoginView/></PublicRoute>           
        <PrivateRoute path='/contacts'><ContactsView/></PrivateRoute>
-      </Switch> 
+       </Switch> 
     </>
     
 )

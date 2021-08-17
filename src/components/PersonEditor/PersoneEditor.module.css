@@ -1,21 +1,41 @@
-.stats{
-   
-    font-size: 18px;
-  
-     
- }
- .item{
-    
-     height: 50px;
-     border: 2px solid;
-     width: 400px;
-     
- }
- .button{
-    margin-left: 40px; 
-    
-    font: inherit;
-    cursor: pointer;
-    outline: none;
-    
- }
+.contacts {
+  padding: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 7px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  background-color: rgb(235, 235, 235);
+}
+.span {
+  width: 500px;
+}
+.contactsLi {
+  margin: 10px auto;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gradientButton {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 10px 10px;
+  margin: 10px 20px;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(
+    to right,
+    #a5acaa 20%,
+    #323235 51%,
+    #a5acaa 100%
+  );
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+.gradientButton:hover {
+  background-position: right center;
+}

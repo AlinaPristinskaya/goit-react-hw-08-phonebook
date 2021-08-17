@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import  authSelectors from '../../redux/auth/auth-selectors';
+import  authSelectors from '../redux/auth/auth-selectors';
 
 const styles = {
   link: {
@@ -21,7 +21,7 @@ function Navigation(){
   return(<nav>
     {isLoggedIn && (
       <NavLink to="/contacts" exact style={styles.link} activeStyle={styles.activeLink}>
-        Телефонная книга   
+        <h2>Телефонная книга </h2>  
       </NavLink>
       )}</nav>
   )

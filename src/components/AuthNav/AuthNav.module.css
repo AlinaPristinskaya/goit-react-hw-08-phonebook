@@ -1,0 +1,11 @@
+.navlinks {
+  color: black;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.navlinks:hover,
+.navlinks:active,
+.navlinks.active {
+  color: blue;
+}
