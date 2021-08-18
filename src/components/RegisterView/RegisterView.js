@@ -1,19 +1,9 @@
 import React, { useState } from 'react';
 import { connect, useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
+import s from './RegisterView.module.css'
 
 
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
 
 function RegisterView(){
   const dispatch=useDispatch();
@@ -43,45 +33,59 @@ function RegisterView(){
 
  
     return (
-      <div>
-        <h1>Страница регистрации</h1>
+      <div className={s.container}>
+        <h3>Введите данные для регистрации</h3>
 
         <form
           onSubmit={handleSubmit}
           autoComplete="off"
-          style={styles.form}
+          className={s.form}
         >
-          <label style={styles.label}>
+          <div class={s.row}>
+          <div class={s.col25}>
+          <label className={s.label}>
             Имя
+            <div class="col-75">
             <input
+              className={s.input}
               type="text"
               name="name"
               value={name}
               onChange={handleChange}
-            />
-          </label>
+            /></div>
+          </label></div></div>
 
-          <label style={styles.label}>
+          <div class={s.row}>
+          <div class={s.col25}>
+          <label className={s.label}>
             Почта
+            <div class="col-75">
             <input
+            className={s.input}
               type="email"
               name="email"
               value={email}
               onChange={handleChange}
-            />
-          </label>
+              
+            /></div>
+          </label></div></div>
 
-          <label style={styles.label}>
+          <div class={s.row}>
+          <div class={s.col25}>
+          <label className={s.label}>
             Пароль
+            <div class="col-75">
             <input
+            className={s.input}
               type="password"
               name="password"
               value={password}
               onChange={handleChange}
-            />
-          </label>
+              
+            /></div>
+          </label></div></div>
 
-          <button type="submit">Зарегистрироваться</button>
+          <button type="submit" className={s.gradientButton}>Зарегистрироваться</button>
         </form>
       </div>
     );

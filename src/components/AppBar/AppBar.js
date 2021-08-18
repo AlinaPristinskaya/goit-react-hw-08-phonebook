@@ -1,5 +1,5 @@
 import React from 'react';
-import Navigation from '../Navigation';
+import Navigation from '../Navigation/Navigation';
 import UserMenu from '../UserMenu/UserMenu';
 import AuthNav from '../AuthNav/AuthNav';
 import selectors from '../../redux/auth/auth-selectors';

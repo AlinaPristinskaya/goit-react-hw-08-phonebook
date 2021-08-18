@@ -3,16 +3,6 @@ import { connect, useDispatch } from 'react-redux';
 import authOperations from '../../redux/auth/auth-operations';
 import s from './LoginView.module.css'
 
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
 
 function LoginView(){
   const dispatch=useDispatch();
@@ -39,11 +29,10 @@ function LoginView(){
 
   return (
       <div className={s.container}>
-        <h1>Страница логина</h1>
+        <h3>Войдите в свой аккаунт</h3>
 
         <form
           onSubmit={handleSubmit}
-          style={styles.form}
           autoComplete="off"
           className={s.form}
         > <div class={s.row}>
@@ -67,6 +56,7 @@ function LoginView(){
             Пароль
             <div class="col-75">
             <input
+            className={s.input}
               type="password"
               name="password"
               value={password}

@@ -1,5 +1,5 @@
 .navlinks {
-  color: black;
+  color: rgb(65, 63, 61);
   text-decoration: none;
   margin: 5px;
 }
@@ -7,5 +7,6 @@
 .navlinks:hover,
 .navlinks:active,
 .navlinks.active {
-  color: blue;
+  color: black;
+  font-size: 18px;
 }

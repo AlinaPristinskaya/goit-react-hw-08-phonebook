@@ -7,9 +7,11 @@ import contactsSelector from '../../redux/contacts/contacts-selectors';
 
 
 const Filter =({value,onChange})=>(
-  <label className={s.label}><b>Фильтр по имени</b><input className={
+  <div className={s.form}><div class={s.row}>
+  <div class={s.col25}>
+  <label className={s.label}><b>Поиск контакта по имени</b><div class="col-75"><input className={
     s.input
-  } type="Text" value={value} onChange={onChange}/></label>
+  } type="Text" value={value} onChange={onChange}/></div></label></div></div></div>
 
 );
 const mapStateToProps=state=>({

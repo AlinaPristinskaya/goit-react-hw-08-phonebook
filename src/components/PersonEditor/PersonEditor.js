@@ -26,7 +26,7 @@ function PersonEditor({persons,onDeleteContacts}){
                     onClick={() => onDeleteContacts(person.id)}>Удалить
                 </button>
                 </li>)}
-              </ul> : <p>No entries in the phone book</p>}
+              </ul> : <p>В вашей телефонной книге пока нет записей</p>}
             </div>  
    </> )
 }

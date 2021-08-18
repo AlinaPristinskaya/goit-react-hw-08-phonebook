@@ -1,15 +1,73 @@
-.form {
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-}
-.input {
-  height: 40px;
-  margin-left: 10px;
-  padding: 8px;
-  font-size: 18px;
-  color: #212121;
+.input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  border: 1px solid rgba(33, 33, 33, 0.2);
-  cursor: pointer;
+  resize: vertical;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.row:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.col25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+@media screen and (max-width: 600px) {
+  .col-25,
+  .col-75,
+  input[type='submit'] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+.label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+.gradientButton {
+  text-decoration: none;
+  display: inline-block;
+  color: white;
+  padding: 10px 10px;
+  margin: 10px 20px;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background-image: linear-gradient(
+    to right,
+    #a5acaa 20%,
+    #323235 51%,
+    #a5acaa 100%
+  );
+  background-size: 200% auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: 0.5s;
+}
+.gradientButton:hover {
+  background-position: right center;
+}
+.form {
+  padding: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-radius: 7px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  background-color: rgb(235, 235, 235);
 }

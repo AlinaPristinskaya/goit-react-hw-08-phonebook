@@ -1,10 +1,10 @@
 import {useState} from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import s from './Form.module.css';
+
 import {connect} from 'react-redux';
 import operations from '../../redux/contacts/contacts-operations';
 import contactSelector from '../../redux/contacts/contacts-selectors'
-
+import style from './Form.module.css';
 
 
 
@@ -49,9 +49,14 @@ function Form({onSubmit,entities}){
   
   return (
     <>
-      <form className={s.form} onSubmit={handelSubmit}>
-        <label htmlFor={nameInputId}> Name </label>
-        <input className={s.input}
+    <div className={style.container}>
+    <h3>Добавить контакт к телефонную книгу</h3>
+      <form className={style.form} onSubmit={handelSubmit}>
+      <div class={style.row}>
+          <div class={style.col25}>
+        <label htmlFor={nameInputId}> Имя </label></div></div>
+        <div class="col-75">
+        <input className={style.input}
               id={nameInputId}
               onChange={handelChangeName}
               value={name}
@@ -60,9 +65,10 @@ function Form({onSubmit,entities}){
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
               title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
               required
-        />
-       <label htmlFor={numberInputId}> Number </label>
-       <input className={s.input}
+        /></div>
+
+       <label htmlFor={numberInputId}> Номер </label>
+       <input className={style.input}
               id={numberInputId}
               onChange={handelChangeNumber}
               value={number}
@@ -72,8 +78,8 @@ function Form({onSubmit,entities}){
               title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
               required
        />
-       <button className={s.button}type="submit">Add contact</button>
-    </form>
+       <button className={style.gradientButton}type="submit">Добавить</button>
+    </form></div>
 
 </>
 );}
