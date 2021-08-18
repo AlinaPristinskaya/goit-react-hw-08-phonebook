@@ -27,7 +27,7 @@ function App({formSubmitHandler,getVisibleContacts,deleteContacts}){
     <><AppBar/>
       <Switch>
        <PublicRoute exact path='/register' restricted><RegisterView/></PublicRoute>
-       <PublicRoute  path='/login'restricted><LoginView/></PublicRoute>           
+       <PublicRoute  path='/login' restricted><LoginView/></PublicRoute>           
        <PrivateRoute path='/contacts'><ContactsView/></PrivateRoute>
        </Switch> 
     </>

@@ -8,12 +8,13 @@ import s from './Navigation.module.css'
 
 function Navigation(){
   const isLoggedIn=useSelector(authSelectors.getIsLoggedIn)
-  return(<nav class={s.container}>
-    {isLoggedIn && (
-      <NavLink to="/contacts" exact>
+  return(
+         <nav className={s.container}>
+        {isLoggedIn && (
+        <NavLink to="/contacts" exact>
         <h2 className={s.h2}>Телефонная книга </h2>  
-      </NavLink>
-      )}</nav>
+        </NavLink>)}
+        </nav>
   )
  
 }

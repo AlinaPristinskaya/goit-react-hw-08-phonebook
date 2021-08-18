@@ -9,14 +9,13 @@ import s from './UserMenu.module.css';
 function UserMenu(){
   const dispatch=useDispatch();
   const name=useSelector(authSelectors.getUsername);
- return (<div className={s.container}>
-    
+ return (
+    <div className={s.container}>
     <span >Добро пожаловать, {name}</span>
-    <button className={s.gradientButton} type="button" onClick={()=>dispatch(authOperations.logOut())
-    }>
+    <button className={s.gradientButton} type="button" onClick={()=>dispatch(authOperations.logOut())}>
       Выйти
     </button>
-  </div>)
+    </div>)
 }
 
 export default UserMenu;

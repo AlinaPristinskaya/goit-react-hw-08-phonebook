@@ -52,10 +52,10 @@ function Form({onSubmit,entities}){
     <div className={style.container}>
     <h3>Добавить контакт в телефонную книгу</h3>
       <form className={style.form} onSubmit={handelSubmit}>
-      <div class={style.row}>
-          <div class={style.col25}>
+      <div className={style.row}>
+        <div className={style.col25}>
         <label htmlFor={nameInputId}> Имя </label></div></div>
-        <div class="col-75">
+        <div className={style.col75}>
         <input className={style.input}
               id={nameInputId}
               onChange={handelChangeName}

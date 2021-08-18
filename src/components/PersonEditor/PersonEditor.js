@@ -16,18 +16,16 @@ function PersonEditor({persons,onDeleteContacts}){
   },[dispatch]) 
 
    
-    return  (  <>
-      
+    return  ( 
+   <>      
       <div className={s.contacts}>{persons.length? 
-              <ul className={s.contacts}>{persons.map((person)=>
-                <li className={s.contactsLi} key={person.id}><span className={s.span}>{person.name}:{person.number}</span>
-                <button className={s.gradientButton}
-                    type="button"
-                    onClick={() => onDeleteContacts(person.id)}>Удалить
-                </button>
-                </li>)}
-              </ul> : <p>В вашей телефонной книге пока нет записей</p>}
-            </div>  
+      <ul className={s.contacts}>{persons.map((person)=>
+      <li className={s.contactsLi} key={person.id}>
+      <span className={s.span}>{person.name}:{person.number}</span>
+      <button className={s.gradientButton} type="button"onClick={() => onDeleteContacts(person.id)}>Удалить </button>
+      </li>)}
+      </ul> : <p>В вашей телефонной книге пока нет записей</p>}
+      </div>  
    </> )
 }
 

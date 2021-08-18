@@ -8,9 +8,9 @@ import contactsSelector from '../../redux/contacts/contacts-selectors';
 
 const Filter =({value,onChange})=>(
   <div className={s.container}>
-  <div className={s.form}><div class={s.row}>
+  <div className={s.form}><div className={s.row}>
   <div class={s.col25}>
-  <label className={s.label}><b>Поиск контакта по имени</b><div class="col-75"><input className={
+  <label className={s.label}><b>Поиск контакта по имени</b><div className={s.col75}><input className={
     s.input
   } type="Text" value={value} onChange={onChange}/></div></label></div></div></div></div>
 

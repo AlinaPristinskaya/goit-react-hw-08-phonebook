@@ -35,12 +35,12 @@ function LoginView(){
           onSubmit={handleSubmit}
           autoComplete="off"
           className={s.form}
-        > <div class={s.row}>
-          <div class={s.col25}>
+        > <div className={s.row}>
+          <div className={s.col25}>
           <label className={s.label}>
            
             Почта
-            <div class="col-75">
+            <div className={s.col75}>
             <input
               className={s.input}
               type="email"
@@ -49,12 +49,12 @@ function LoginView(){
               onChange={handleChange}
             /></div>
           </label></div></div>
-          <div class={s.row}>
-          <div class={s.col25}>
+          <div className={s.row}>
+          <div className={s.col25}>
 
           <label className={s.label}>
             Пароль
-            <div class="col-75">
+            <div className={s.col75}>
             <input
             className={s.input}
               type="password"
