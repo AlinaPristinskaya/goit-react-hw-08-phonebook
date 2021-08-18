@@ -50,7 +50,7 @@ function Form({onSubmit,entities}){
   return (
     <>
     <div className={style.container}>
-    <h3>Добавить контакт к телефонную книгу</h3>
+    <h3>Добавить контакт в телефонную книгу</h3>
       <form className={style.form} onSubmit={handelSubmit}>
       <div class={style.row}>
           <div class={style.col25}>

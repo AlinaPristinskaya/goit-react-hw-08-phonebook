@@ -20,7 +20,7 @@ textarea {
 }
 .col25 {
   float: left;
-  width: 25%;
+  width: 100%;
   margin-top: 6px;
 }
 .col-75 {
@@ -39,6 +39,7 @@ textarea {
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
+  width: 100%;
 }
 .gradientButton {
   text-decoration: none;

@@ -1,6 +1,4 @@
-.input,
-select,
-textarea {
+.input {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -20,12 +18,12 @@ textarea {
 }
 .col25 {
   float: left;
-  width: 25%;
+  width: 100%;
   margin-top: 6px;
 }
 .col-75 {
   float: left;
-  width: 75%;
+  width: 100%;
   margin-top: 6px;
 }
 @media screen and (max-width: 600px) {
@@ -39,6 +37,7 @@ textarea {
 .label {
   padding: 12px 12px 12px 0;
   display: inline-block;
+  width: 100%;
 }
 .gradientButton {
   text-decoration: none;

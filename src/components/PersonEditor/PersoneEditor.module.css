@@ -7,12 +7,12 @@
   background-color: rgb(235, 235, 235);
 }
 .span {
-  width: 500px;
+  display: inline-block;
 }
 .contactsLi {
   margin: 10px auto;
-  flex-direction: column-reverse;
-  align-items: center;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
